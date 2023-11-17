@@ -1,0 +1,25 @@
+<div class="ApplyRecord">
+  <p class="ApplyRecordTitle">我的收藏</p>
+  <div class="Line"></div>
+  <table>
+    <div class="tableTitle">
+      <thead>
+        <th>#</th>
+        <th>寵物名稱</th>
+        <th>寵物連結</th>
+        <th>取消收藏</th>
+      </thead>
+    </div>
+    <tbody>
+      <!-- 要遍歷 -->
+      <div class="tableBody" *ngFor="let animal of dispalyAnimal ; let i = index">
+        <tr>
+          <td>{{i+1}}</td>
+          <td>{{animal.name}}</td>
+          <td> <button (click)="navigateToYourPath(animal.id)">❤️</button></td>
+          <td><button (click)="unsubscription(animal.id)">取消</button></td>
+        </tr>
+      </div>
+    </tbody>
+  </table>
+</div>

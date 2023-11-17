@@ -1,0 +1,60 @@
+<body>
+  <div class="carousel-container">
+  <ngx-slick-carousel class="carousel"
+  #slickModal="slick-carousel"
+  [config]="slideConfig"
+  (init)="slickInit($event)"
+  (breakpoint)="breakpoint($event)"
+  (afterChange)="afterChange($event)"
+  (beforeChange)="beforeChange($event)">
+<div ngxSlickItem *ngFor="let slide of slides" class="slide">
+<img src="{{ slide.img }}" alt="" width="100%">
+</div>
+</ngx-slick-carousel>
+</div>
+  <br>
+  <div class="BenefitsContainer">
+    <div class="BenefitsText">寵物領養的好處?</div>
+    <div class="BenefitsDescription">
+      <br>
+      <span>1.可以獲得很多資源和幫助</span>
+      <br />
+      <span>2.減少不少養殖場的獲利，減少虐待動物的產生</span>
+      <br />
+      <span>3.選擇種類非常多</span>
+      <br />
+      <span>4.可以選擇認養成犬</span>
+    </div>
+    <img class="BenefitImage" src="assets\images\小邊框.png" />
+  </div>
+  <div class="RecommendationContainer">
+    <div class="Text">
+      <div class="RankingTitle">
+        <div class="Recommendation">Recommendation</div>
+        <div class="MostFollowed">最多人關注</div>
+        <div class="TopPets">點擊率前三寵物</div>
+      </div>
+    </div>
+    <div class="CardContainer"  >
+      <div class="Card"  *ngFor="let pet of displayRankAnimals" (click)="cardClicked(pet.id)" >
+        <img class="PetImage" src="data:image/png;base64,{{pet.photo}}" />
+        <div class="PetDetails">
+          <img class="MapMarker" src="assets\images\map-marker.png" />
+          <span class="Location">{{pet.cityName}}</span>
+          <img class="paw" src="assets\images\paw.png" />
+          <span class="PetType">{{pet.speciesName}}</span>
+          <img class="couple" src="assets\images\couple.png" />
+          <span class="Gender">{{ pet.sex === 'F' ? '母' : pet.sex === 'M' ? '公' : '' }}</span>
+        </div>
+        <div class="PetName">{{pet.name}}</div>
+        <div class="PetDescription">{{pet.introduction}}</div>
+        <div class="Requirements">
+          <div class="AgeRequirement" [ngStyle]="{'color': pet.conditionAgeLimit === 'Y' ? '#D14747' : '#DFD2D2'}">需年滿20歲</div>
+          <div class="TrackingRequirement" [ngStyle]="{'color': pet.conditionFollowup === 'Y' ? '#D14747' : '#DFD2D2'}">需接受後續追蹤</div>
+          <div class="FamilyApprovalRequirement" [ngStyle]="{'color': pet. conditionParentalPermission === 'Y' ? '#D14747' : '#DFD2D2'}">需家人同意</div>
+          <div class="AgreementRequirement" [ngStyle]="{'color': pet. conditionAffidavit === 'Y' ? '#D14747' : '#DFD2D2'}">需簽署養切結書</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
